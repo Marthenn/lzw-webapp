@@ -26,8 +26,18 @@ const remove = async (id) => {
     }
 }
 
+const get_newest_id = async () => {
+    try{
+        const [rows, fields] = await conn.promise().query('SELECT id FROM History ORDER BY id DESC LIMIT 1');
+        return rows[0].id;
+    } catch (err) {
+        throw err;
+    }
+}
+
 module.exports = {
     create,
     read,
-    remove
+    remove,
+    get_newest_id
 }
