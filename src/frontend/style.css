@@ -156,6 +156,8 @@ main{
     border-radius: 50%;
   }
 
+
+
   .history{
     background-color: #5F9DF7;
     border-radius: 25px;
@@ -165,3 +167,45 @@ main{
     width: 100%;
     align-items: center;
   }
+
+#history-header {
+    display: grid;
+    grid-template-columns: 1fr 0.3fr;
+    grid-gap: 10px;
+}
+
+#history-header > h2{
+    text-align: left;
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.history-item{
+    border-radius: 25px;
+    background-color: #FFF7E9;
+    padding: 8px 20px 20px 20px;
+    margin-top: 15px;
+    color: black;
+}
+
+.history-item > h3,p{
+    margin: 5px 0;
+}
+
+.history-item > p{
+    font-size: 16px;
+}
+
+.history-item > button {
+    border-radius: 1e31px;
+    font-size: 14px;
+    border: none;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    cursor: pointer;
+    margin-top: 5px;
+    background: #FF731D;
+    color: white;
+    font-weight: 500;
+}
