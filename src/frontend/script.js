@@ -24,7 +24,7 @@ const make_history = (item) => {
 
 const nuke_history = async () => {
     try{
-        const response = await fetch('http://localhost:36656/history', {
+        const response = await fetch('https://lzw-webapp-production.up.railway.app/history', {
             method: 'DELETE'
         });
         history = [];
@@ -35,7 +35,7 @@ const nuke_history = async () => {
 
 const get_history = async () => {
     try{
-        const response = await fetch('http://localhost:36656/history');
+        const response = await fetch('https://lzw-webapp-production.up.railway.app/history');
         history = await response.json();
 
         //clear history list
@@ -55,7 +55,7 @@ const get_history = async () => {
 const encode_fe = async (text, further) => {
     try{
         const further_body = further ? 'yes' : 'no';
-        const response = await fetch('http://localhost:36656/encode', {
+        const response = await fetch('https://lzw-webapp-production.up.railway.app/encode', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -78,7 +78,7 @@ const encode_fe = async (text, further) => {
 const decode_fe = async (text, further) => {
     try{
         const further_body = further ? 'yes' : 'no';
-        const response = await fetch('http://localhost:36656/decode', {
+        const response = await fetch('https://lzw-webapp-production.up.railway.app/decode', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
