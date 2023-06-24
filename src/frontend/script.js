@@ -29,7 +29,7 @@ const nuke_history = async () => {
         });
         history = [];
     } catch (err) {
-        throw err;
+        alert(err);
     }
 }
 
@@ -41,20 +41,62 @@ const get_history = async () => {
         //clear history list
         history_list.innerHTML = '';
 
+        history = history.reverse();
+
         for (const item of history){
             const history_item = make_history(item);
             history_list.append(history_item);
         }
     } catch (err) {
-        throw err;
+        alert (err);
     }
 }
 
-const encode_fe = async (text) => {
+const encode_fe = async (text, further) => {
     try{
+        const further_body = further ? 'yes' : 'no';
+        const response = await fetch('http://localhost:36656/encode', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                further: further_body,
+                input: text
+            })
+        });
 
+        const data = await response.json();
+
+        const new_history = make_history(data);
+        history_list.prepend(new_history);
     } catch (err) {
-        throw err;
+        alert(err)
+    }
+}
+
+const decode_fe = async (text, further) => {
+    try{
+        const further_body = further ? 'yes' : 'no';
+        const response = await fetch('http://localhost:36656/decode', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                further: further_body,
+                input: text
+            })
+        });
+
+        console.log(response)
+
+        const data = await response.json();
+
+        const new_history = make_history(data);
+        history_list.prepend(new_history);
+    } catch (err) {
+        alert(err);
     }
 }
 
@@ -64,7 +106,24 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const encode_button = document.getElementById('encode-button');
     encode_button.addEventListener('click', () => {
-        // connect ke BE untuk encode
+        const further_switch = document.getElementById('further-switch');
+        const further = further_switch.querySelector('input').checked;
+        
+        const decode_switch = document.getElementById('decode-switch');
+        const decode_status = decode_switch.querySelector('input').checked;
+        
+        const input = document.getElementById('raw-text').value;
+
+        if (input === ''){
+            alert('Please input some text!');
+            return;
+        }
+
+        if(decode_status){
+            decode_fe(input, further);
+        } else {
+            encode_fe(input, further);
+        }
     })
 
     const delete_button = document.querySelector('.delete-button');
@@ -72,24 +131,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         const status = prompt('Are you sure? (type "yes" to confirm)');
         if (status === 'yes'){
             try{
-                console.log('nuking')
                 await nuke_history();
                 alert('History deleted!');
-                console.log('bang udah bang')
                 // clear the history list
                 history_list.innerHTML = '';
             } catch (err) {
-                console.log(err)
+                console.log(err);
             }
         }
     })
-})
-
-document.addEventListener(RENDER_EVENT, () =>{
-    const history_list = document.getElementById('history-list');
-    history_list.innerHTML = "";
-    for (const item of history){
-        const history_item = make_history(item);
-        history_list.append(history_item);
-    }
 })
