@@ -167,11 +167,35 @@ const decode_rle = (arr) => {
     return [res, ratio];
 }
 
+const lzw_code_string = (code) => {
+    let res = "";
+    for (let i = 0; i < code.length; i++) {
+        res += code[i];
+        if (i != code.length - 1) {
+            res += " ";
+        }
+    }
+    return res;
+}
+
+const rle_code_string = (code) => {
+    let res = "";
+    for (let i = 0; i < code.length; i++) {
+        res += code[i][0] + "|" + code[i][1];
+        if (i != code.length - 1) {
+            res += " ";
+        }
+    }
+    return res;
+}
+
 module.exports = {
     encode_lzw,
     decode_lzw,
     encode_bwt,
     decode_bwt,
     encode_rle,
-    decode_rle
+    decode_rle,
+    lzw_code_string,
+    rle_code_string
 }
