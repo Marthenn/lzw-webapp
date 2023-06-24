@@ -2,34 +2,34 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>LZW Webapp</title>
+        <title>LZW WEBAPP</title>
         <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="style.css">
     </head>
 
     <body>
         <header>
-            <h1>LZW Webapp</h1>
+            <h1>LZW WEBAPP</h1>
         </header>
 
         <main>
             <section class = "encode-decode">
                 <form id = "encode-form">
                     <input id = "raw-text" type = "text" name = "encode-input" placeholder="Masukkan teks awal">
-                    <button id = "encode-button" type = "button">Encode</button>
-                    <br>
+                    <button id = "encode-button" type = "button">Process</button>
+                </form>
+                <div id = "encode-decode-switch">
                     <label class = "switch">
                         <input type = "checkbox">
                         <span class = "slider round"></span>
                         <span class = "switch-text">BWT + RLE</span>
                     </label>
-                    <br>
                     <label class = "switch">
                         <input type = "checkbox">
                         <span class = "slider round"></span>
                         <span class = "switch-text">Encode/Decode</span>
                     </label>
-                </form>
+                </div>
             </section>
 
             <section class = "output">
@@ -49,7 +49,7 @@
 
             <section class = "history">
                 <div id = "history-header">
-                    <h2>History</h2>
+                    <h2>HISTORY</h2>
                 </div>
                 <div id = "history-list">
                     <!-- 
