@@ -1,6 +1,8 @@
 # lzw-webapp
 > A web application for LZW compression and decompression. The compression can be further enhanced by BWT and RLE algorithms.
 
+![Screenshot of the Web App](https://i.imgur.com/g4mDUOy.png)
+
 ## Usage
 The web application is hosted on vercel (front-end) and railway (back-end). You can visit the web application at [https://lzw-webapp.vercel.app/](https://lzw-webapp.vercel.app/).
 
