@@ -17,9 +17,9 @@ const read = async () => {
     }
 }
 
-const remove = async (id) => {
+const remove = async () => {
     try{
-        const [rows, fields] = await conn.promise().query('DELETE FROM History WHERE id = ?', [id]);
+        const [rows, fields] = await conn.promise().query('DELETE FROM History');
     } catch (err) {
         throw err;
     }

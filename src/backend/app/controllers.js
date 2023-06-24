@@ -12,8 +12,7 @@ const get_history = async (req, res) => {
 
 const delete_history = async (req, res) => {
     try{
-        const id = req.params.id;
-        await db.remove(id);
+        await db.remove();
         res.status(200).send("Deleted history!");
     } catch (err) {
         res.status(500).send("Failed to delete history!");
@@ -47,17 +46,22 @@ const decode = async (req, res) => {
     try{
         const types = 'decode';
         const further = req.body.further;
-        const input = req.body.input;
+        let input = req.body.input;
+
         let output, ratio;
         if (further == 'yes') {
-            let [a, b] = algo.decode_rle(input);
+            // add BWT_EOF to the end of the string
+            input += String.toString(algo.BWT_EOF);
+            let code = algo.string_to_rle(input);
+            let [a, b] = algo.decode_rle(code);
             const c = algo.decode_bwt(a);
             const [d, e] = algo.decode_lzw(c);
             output = algo.lzw_decode_string(d);
             ratio = b * e;
         } else {
-            let [a, b] = algo.decode_lzw(input);
-            output = algo.lzw_decode_string(a);
+            let code = algo.string_to_lzw(input);
+            let [a, b] = algo.decode_lzw(code);
+            output = a;
             ratio = b;
         }
         await db.create(types, further, input, output, ratio);

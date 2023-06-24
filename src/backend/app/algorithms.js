@@ -218,5 +218,6 @@ module.exports = {
     lzw_code_string,
     rle_code_string,
     string_to_lzw,
-    string_to_rle
+    string_to_rle,
+    BWT_EOF
 }
