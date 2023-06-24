@@ -11,6 +11,7 @@ const initialize_map_decompress = () => {
     for (let i = 0; i < 256; i++) {
         res.set(i, String.fromCharCode(i));
     }
+    return res;
 }
 
 const compress = (str) => {
@@ -43,7 +44,7 @@ const compress = (str) => {
 
     // return the result
     console.log('Done!');
-    return res, ratio;
+    return [res, ratio];
 }
 
 const decompress = (arr) => {
@@ -74,7 +75,7 @@ const decompress = (arr) => {
 
     // return the result
     console.log('Done!');
-    return res, ratio;
+    return [res, ratio];
 }
 
 module.exports = {
