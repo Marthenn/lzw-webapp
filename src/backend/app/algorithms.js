@@ -189,6 +189,25 @@ const rle_code_string = (code) => {
     return res;
 }
 
+const string_to_lzw = (str) => {
+    let res = [];
+    let arr = str.split(" ");
+    for (let i = 0; i < arr.length; i++) {
+        res.push(parseInt(arr[i]));
+    }
+    return res;
+}
+
+const string_to_rle = (str) => {
+    let res = [];
+    let arr = str.split(" ");
+    for (let i = 0; i < arr.length; i++) {
+        let temp = arr[i].split("|");
+        res.push([parseInt(temp[0]), parseInt(temp[1])]);
+    }
+    return res;
+}
+
 module.exports = {
     encode_lzw,
     decode_lzw,
