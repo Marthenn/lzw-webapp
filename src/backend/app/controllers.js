@@ -36,7 +36,7 @@ const encode = async (req, res) => {
         }
         await db.create(types, further, input, output, ratio);
         const id = db.get_newest_id();
-        res.status(200).send({id, types, further, input, output, ratio});
+        res.status(200).send({types, further, input, output, ratio});
     } catch (err) {
         res.status(500).send("Failed to encode!");
     }
@@ -51,12 +51,14 @@ const decode = async (req, res) => {
         let output, ratio;
         if (further == 'yes') {
             // add BWT_EOF to the end of the string
-            input += String.toString(algo.BWT_EOF);
             let code = algo.string_to_rle(input);
+            console.log(code);
             let [a, b] = algo.decode_rle(code);
+            console.log(a, b)
             const c = algo.decode_bwt(a);
+            console.log(c)
             const [d, e] = algo.decode_lzw(c);
-            output = algo.lzw_decode_string(d);
+            output = d;
             ratio = b * e;
         } else {
             let code = algo.string_to_lzw(input);
@@ -65,8 +67,7 @@ const decode = async (req, res) => {
             ratio = b;
         }
         await db.create(types, further, input, output, ratio);
-        const id = db.get_newest_id();
-        res.status(200).send({id, types, further, input, output, ratio});
+        res.status(200).send({types, further, input, output, ratio});
     } catch (err) {
         res.status(500).send("Failed to decode!");
     }
