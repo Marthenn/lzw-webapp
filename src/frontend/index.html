@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>LZW Webapp</title>
+        <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <header>
+            <h1>LZW Webapp</h1>
+        </header>
+
+        <main>
+            <section class = "encode-decode">
+                <form id = "encode-form">
+                    <input id = "raw-text" type = "text" name = "encode-input" placeholder="Masukkan teks awal">
+                    <button id = "encode-button" type = "button">Encode</button>
+                    <br>
+                    <label class = "switch">
+                        <input type = "checkbox">
+                        <span class = "slider round"></span>
+                        <span class = "switch-text">BWT + RLE</span>
+                    </label>
+                    <br>
+                    <label class = "switch">
+                        <input type = "checkbox">
+                        <span class = "slider round"></span>
+                        <span class = "switch-text">Encode/Decode</span>
+                    </label>
+                </form>
+            </section>
+
+            <section class = "output">
+                <div id = "output-header">
+                    <h2>Output</h2>
+                </div>
+                <div id = "input-text">
+                    <p></p>
+                </div>
+                <div id = "output-text">
+                    <p></p>
+                </div>
+                <div id = "ratio-text">
+                    <p></p>
+                </div>
+            </section>
+
+            <section class = "history">
+                <div id = "history-header">
+                    <h2>History</h2>
+                </div>
+                <div id = "history-list">
+                    <!-- 
+                    <article class = "history_item">
+                        <h3>Encode / Decode</h3>
+                        <p>Input: <span>input</span></p>
+                        <p>Output: <span>output</span></p>
+                        <p>Ratio: <span>ratio</span></p>
+                        <p>Further: <span>further</span></p>
+                        <div class = "delete-button">
+                            <button class = "delete-button">Delete</button>
+                        </div>
+                    </article>
+                    -->
+                </div>
+            </section>
+        </main>
+    </body>
