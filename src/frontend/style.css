@@ -170,7 +170,7 @@ main{
 
 #history-header {
     display: grid;
-    grid-template-columns: 1fr 0.3fr;
+    grid-template-columns: 1fr 0.27fr;
     grid-gap: 10px;
 }
 
@@ -196,16 +196,18 @@ main{
     font-size: 16px;
 }
 
-.history-item > button {
+.delete-button {
     border-radius: 1e31px;
     font-size: 14px;
     border: none;
-    padding: 5px;
+    padding: 8px;
     padding-left: 10px;
-    padding-right: 10px;
     cursor: pointer;
     margin-top: 5px;
     background: #FF731D;
     color: white;
     font-weight: 500;
+    font-size: 20px;
+    font-weight: 500;
+    width: 140px;
 }
