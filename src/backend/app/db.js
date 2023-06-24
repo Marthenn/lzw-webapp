@@ -20,11 +20,7 @@ const read = async () => {
 
 const remove = async (id) => {
     try{
-        if (id == null){
-            const [rows, fields] = await conn.promise().query('DELETE FROM History');
-        } else {
-            const [rows, fields] = await conn.promise().query('DELETE FROM History WHERE id = ?', [id]);
-        }
+        const [rows, fields] = await conn.promise().query('DELETE FROM History WHERE id = ?', [id]);
     } catch (err) {
         throw err;
     }
