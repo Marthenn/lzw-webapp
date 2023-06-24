@@ -8,7 +8,7 @@ const routes = require('./routes');
 const app = express();
 
 app.use(cors({
-    origin: env.FRONTEND_URL
+    origin: process.env.FRONTEND_URL
 }));
 
 app.use(bodyParser.json());
@@ -21,7 +21,7 @@ app.use(
 
 routes(app);
 
-const port = env.PORT;
+const port = process.env.PORT;
 
 app.listen(port, () => {
     console.log(`App running on port ${port}.`)
