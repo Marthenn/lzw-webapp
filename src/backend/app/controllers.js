@@ -36,7 +36,6 @@ const encode = async (req, res) => {
             output = algo.lzw_code_string(a);
         }
         await db.create(types, further, input, output, ratio);
-        const id = db.get_newest_id();
         res.status(200).send({types, further, input, output, ratio});
     } catch (err) {
         res.status(500).send("Failed to encode!");
@@ -51,7 +50,6 @@ const decode = async (req, res) => {
 
         let output, ratio;
         if (further == 'yes') {
-            // add BWT_EOF to the end of the string
             let code = algo.string_to_rle(input);
             console.log(code);
             let [a, b] = algo.decode_rle(code);
