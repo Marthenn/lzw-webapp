@@ -21,7 +21,7 @@ const delete_history = async (req, res) => {
 
 const encode = async (req, res) => {
     try{
-        const types = 'encode';
+        const types = 'Encode';
         const further = req.body.further;
         const input = req.body.input;
         let [a, ratio] = algo.encode_lzw(input);
@@ -44,7 +44,7 @@ const encode = async (req, res) => {
 
 const decode = async (req, res) => {
     try{
-        const types = 'decode';
+        const types = 'Decode';
         const further = req.body.further;
         let input = req.body.input;
 
