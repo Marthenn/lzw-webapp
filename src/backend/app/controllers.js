@@ -25,12 +25,13 @@ const encode = async (req, res) => {
         const further = req.body.further;
         const input = req.body.input;
         let [a, ratio] = algo.encode_lzw(input);
+        console.log(ratio)
         let output = algo.lzw_code_string(a);
         if (further == 'yes') {
             const b = algo.encode_bwt(a);
             const [c, d] = algo.encode_rle(b);
             output = algo.rle_code_string(c);
-            ratio *= d;
+            ratio *= d/100;
         } else {
             output = algo.lzw_code_string(a);
         }
@@ -59,7 +60,7 @@ const decode = async (req, res) => {
             console.log(c)
             const [d, e] = algo.decode_lzw(c);
             output = d;
-            ratio = b * e;
+            ratio = b * e / 100;
         } else {
             let code = algo.string_to_lzw(input);
             let [a, b] = algo.decode_lzw(code);
