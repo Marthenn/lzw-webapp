@@ -1,5 +1,4 @@
 const conn = require('./db.config')
-const algo = require('./algorithms');
 
 const create = async (types, further, input, output, ratio) => {
     try{
