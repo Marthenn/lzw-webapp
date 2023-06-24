@@ -124,6 +124,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         } else {
             encode_fe(input, further);
         }
+
+        document.getElementById('raw-text').value = '';
     })
 
     const delete_button = document.querySelector('.delete-button');
