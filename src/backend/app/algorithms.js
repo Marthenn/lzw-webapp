@@ -216,5 +216,7 @@ module.exports = {
     encode_rle,
     decode_rle,
     lzw_code_string,
-    rle_code_string
+    rle_code_string,
+    string_to_lzw,
+    string_to_rle
 }
